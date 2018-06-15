@@ -1,2 +1,2 @@
 # tinywebdb-iot
-tinywebdb for Arduino ESP8266
+tinywebdb library for IoT power by Arduino ESP8266
