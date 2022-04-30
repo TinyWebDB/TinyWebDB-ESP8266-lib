@@ -13,6 +13,7 @@
 #include <time.h>            
 #define JST     3600*9
 
+#include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
@@ -27,7 +28,6 @@ const unsigned long BAUD_RATE = 9600;      // serial connection speed
 const unsigned long HTTP_TIMEOUT = 10000;  // max respone time from server
 const size_t MAX_CONTENT_SIZE = 512;       // max size of the HTTP response
 
-#include "WiFiManager.h"          //https://github.com/tzapu/WiFiManager
 
 void configModeCallback (WiFiManager *myWiFiManager) {
   USE_SERIAL.println("Entered config mode");
@@ -42,7 +42,7 @@ void setup() {
     pinMode(ledPin, OUTPUT);
     digitalWrite(ledPin, HIGH);
 
-    USE_SERIAL.begin(115200);
+    USE_SERIAL.begin(BAUD_RATE);
    // USE_SERIAL.setDebugOutput(true);
 
     USE_SERIAL.println();
