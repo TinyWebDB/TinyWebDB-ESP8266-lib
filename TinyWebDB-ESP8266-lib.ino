@@ -28,7 +28,6 @@ const unsigned long BAUD_RATE = 9600;      // serial connection speed
 const unsigned long HTTP_TIMEOUT = 10000;  // max respone time from server
 const size_t MAX_CONTENT_SIZE = 512;       // max size of the HTTP response
 
-
 void configModeCallback (WiFiManager *myWiFiManager) {
   USE_SERIAL.println("Entered config mode");
   USE_SERIAL.println(WiFi.softAPIP());
@@ -93,12 +92,14 @@ void loop() {
 
     sprintf(tag, "led-%06x", ESP.getChipId());
     delay(5000);
-    for (int i = 0; i<10; i++) {
+    for (int i = 0; i<3; i++) {
       digitalWrite(ledPin, HIGH);
+      delay(1000);
       get_TinyWebDB(tag);
       digitalWrite(ledPin, LOW);
       delay(5000);
     }
+    delay(50000);
 }
 
 void sensor_TinyWebDB(const char* tag) {    
